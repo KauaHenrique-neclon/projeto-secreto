@@ -1,0 +1,21 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'css/login/escolher.css' %}">
+    </head>
+    <body>
+        <div class="tudo">
+            <div>
+                <h1>Escolher Pagina</h1>
+            </div>
+            <div class="escolherPaginas">
+                <a href="{% url 'publicarPostFoto' %}"><button>Publicar</button></a>
+                <button>Perfil</button>
+                <a href="{% url 'home' %}"><button>Home</button></a>
+                <button>Adicionar amigos</button>
+            </div>
+        </div>
+    </body>
+</html>

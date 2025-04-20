@@ -1,0 +1,209 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+
+/* 
+   style do menu onde aparece os post de fotos
+   e os comentarios da fotos
+*/
+.tudo {
+    display: grid;
+    grid-template-columns: 70% 20%;
+    height: 100%;
+    background-color: azure;
+    gap: 10%;
+}
+.publicacoes {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.postes {
+    margin-bottom: 20px;
+}
+
+.descricaoUsuario {
+    display: flex;
+    align-items: center;
+    margin-left: 4em;
+}
+.descricaoUsuario h1{
+    font-size: 18px;
+}
+.user-photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.postagem{
+    width: 80%;
+    margin-left: 5%;
+    margin-top: 2%;
+}
+.postagem img{
+    width: 100%;
+    border-radius: 10px;
+    height: 50rem;
+}
+.postagem p{
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 1%;
+    word-wrap: break-word;
+}
+
+
+/* 
+   style da janela de comentario modal, onde
+   aparece e fecha a janela
+*/
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+  
+.modal-conteudo {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+  
+.fechar-modal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+  
+.fechar-modal:hover,
+.fechar-modal:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.modal-conteudo textarea{
+    width: 90%;
+    height: 60px;
+    margin-top: 2%;
+    margin-left: 5%;
+    resize: none;
+    border:  1px solid #d3d3d3;
+}
+.modal-conteudo button{
+    padding: 10px 15px;
+    width: 80%;
+    margin-left: 10%;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    margin-top: 0.8%;
+    cursor: pointer;
+    position: relative;
+    margin-right: 2%;
+}
+  
+
+/* 
+   style do adicionar amigos do lado 
+   faz da parte de adicionar amigos
+*/
+.mensagens {
+    background-color: transparent;
+    padding: 20px;
+    display: flex;
+    margin-right: 2%;
+    flex-direction: column;
+    border: 1px solid #000;
+    border-radius: 10px;
+    margin-top: 3%;
+}
+
+.perfilAdicionar {
+    width: 100%;
+    height: 30px;
+    float: left;
+    display: grid;
+    grid-template-columns: 20% 60%;
+}
+.perfilAdicionar h1{
+    font-size: 20px;
+    margin-top: 10%;
+    cursor: pointer;
+}
+.userAdicionar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+
+/* 
+    style da parte de comentarios 
+    do site
+
+.comentariosFeitos{
+    width: 100%;
+    float: left;
+    margin-top: 3%;
+}
+.comentariosFeitos span{
+    font-size: 20px;
+    margin-bottom: 10%;
+}
+.userComentario{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    cursor: pointer;
+}
+/*
+.comentarioTexto p{
+    width: 90%;
+    margin-left: 5%;
+    word-wrap: break-word;
+    margin-top: 5%;
+}
+*/
+
+.comentariosFeitos {
+    display: flex; 
+    align-items: center;
+    margin-bottom: 5px;
+}
+    
+.userComentario {
+    width: 40px; 
+    height: 40px;
+    border-radius: 50%; 
+    margin-right: 10px; 
+}
+.comentarioTexto {
+    padding-left: 50px;
+}
+
+.comentarioTexto p {
+    margin: 0; 
+    width: 90%;
+    line-height: 1.5;
+    color: #333; 
+    word-break: break-word;
+}

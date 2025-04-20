@@ -1,0 +1,87 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <link rel="stylesheet" href="{% static 'css/publicar/publicar.css' %}">
+        <script src="{% static 'js/publicar/janelaModalFoto.js' %}" defer></script>
+        <script src="{% static 'js/publicar/escolhePublicar.js' %}" defer></script>
+        <script src="{% static 'js/publicar/janelaModalText.js' %}" defer></script>
+        <script src="{% static 'js/publicar/visualizar.js' %}" defer></script>
+        <script src="{% static 'js/publicar/visualizarText.js' %}" defer></script>
+        <meta charset="uft-8">
+    </head>
+    <body>
+        <div class="tudo">
+
+            <!-- escolher qual tipo de publicacao -->
+            <div class="escolher">
+                <button id="buttonPublicarFoto" name="buttonPublicarFoto">Publicar Fotos</button>
+                <button id="buttoPublicarText" name="buttoPublicarText">Publicar Texto</button>
+            </div>
+
+            <!-- publicar post com fotos -->
+            <!-- post com fotos do usuario-->
+            {% if dados %}
+            <div class="fotos" id="fotos" name="fotos" style="display: none;">
+                <div class="publicarfotos">
+                    <form action="{% url 'publicarPostFoto' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="dadospublicacao">
+                        <h1>Publicar Foto</h1>
+                        <label class="upload-button" for="image">Inserir a foto</label>
+                        <input type="file" name="image" id="image" accept="image/*" requered>
+                        <textarea name="descricao" id="descricao" placeholder="Descrição" maxlength="255" requered></textarea>
+                        <input type="hidden" id="username" value="{{ dados.username }}">
+                        <input type="hidden" id="userImage" value="{{ dados.fotousuario }}">
+                    </div>
+                    <div class="ver-exemplopublicar">
+                        <button id="visualizar-foto" type="button">Visualizar</button>
+                        <button class="ButtonPublicarPost" type="submit">Publicar</button>
+                    </div>
+                    </form>
+                </div>
+                <div class="visualizarExemplo" id="visualizar-post-foto">
+                    <span class="fechar-modalFoto">&times;</span>
+                    <div class="postes"></div>
+                </div>
+           </div>
+           {% endif %}
+
+           <!-- publicar post com texto -->
+           <!-- post com texto do usuario-->
+            {% if dados %}
+           <div class="text" id="text" name="text" style="display: none;">
+                <div class="publicartexto">
+                    <div class="dadospublicacaotext">
+                    <form action="{% url 'publicarPostText' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                        <h1>Publicar Texto</h1>
+                        <textarea name="descricao" id="descricao" placeholder="Texto para publicar" maxlength="255" requered></textarea>
+                        <input type="hidden" id="username" value="{{ dados.username }}">
+                        <input type="hidden" id="userImage" value="{{ dados.fotousuario }}">
+                    </div>
+                    <div class="ver-exemplopublicar">
+                        <button id="visualizar-text">Visualizar</button>
+                        <button class="ButtonPublicarPost" type="submit">Publicar</button>
+                    </form>
+                    </div>
+                </div>
+                <div class="visualizarExemploText" id="visualizar-post-text">
+                    <span class="fechar-modalText">&times;</span>
+                    <div class="postes"></div>
+                 </div>
+           </div>
+           {% endif %}
+           {% if messages %}
+           <div class="messages">
+           {% for message in messages %}
+               <div class="alert {% if message.tags %}{{ message.tags }}{% endif %}">
+                   {{ message }}
+               </div>
+           {% endfor %}
+           </div>
+           {% endif %}
+        </div>
+    </body>
+</html>

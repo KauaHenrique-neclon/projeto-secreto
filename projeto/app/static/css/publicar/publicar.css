@@ -1,0 +1,213 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+.tudo {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+/* 
+botoes de escolher qual vai ser publicado
+*/
+.escolher {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.escolher button {
+    flex: 1;
+    padding: 10px;
+    margin: 0 5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.escolher button:hover {
+    background-color: #0056b3;
+}
+
+/*
+div de publicar fotos, style da publicaçao de fotos e sua janela modal
+*/
+.publicarfotos {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+.publicarfotos h1{
+    font-size: 20px;
+}
+.dadospublicacao {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.dadospublicacao input[type="image"] {
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    max-width: 100%;
+}
+
+.dadospublicacao textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+.ver-exemplopublicar {
+    text-align: center;
+    margin-top: 2%;
+}
+
+#visualizar-foto , .ButtonPublicarPost{
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#visualizar-foto:hover {
+    background-color: #218838;
+}
+
+.dadospublicacao label{
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.upload-button{
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#image {
+    display: none;
+}
+/*
+style da janela modal da publicar foto e publicar texto
+*/
+.visualizarExemplo,
+.visualizarExemploText {
+    display: none; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 90%;
+    height: 100%;
+    background-color: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.fechar-modalText, .fechar-modalFoto {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+/*
+ o style do conteudo da janela modal e sua visualização de publicação 
+ separa para ficar bom a manutenção
+ isso é do poste com fotos
+*/
+.postes {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    max-height: 80%;
+    margin-top: 3%;
+    overflow-y: auto;
+    width: 60%;
+    margin-left: 20%;
+}
+
+.descricaoUsuario {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.user-photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.descricaoUsuario p{
+    margin-left: 30%;
+}
+
+.postagem {
+    margin-bottom: 20px;
+}
+
+.postagem img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+/*
+ o style do conteudo da janela modal e sua visualização de publicação 
+ separa para ficar bom a manutenção
+ isso é do poste com texto
+*/
+.publicartexto {
+    margin-top: 20px;
+}
+.publicartexto h1{
+    font-size: 20px;
+}
+
+.dadospublicacaotext textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    width: 90%;
+    margin-left: 5%;
+    height: 100px;
+}
+/*
+style da janela modal da publicar foto e publicar texto
+*/
+#visualizar-text {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#visualizar-text:hover {
+    background-color: #218838;
+}

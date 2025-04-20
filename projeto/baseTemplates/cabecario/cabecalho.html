@@ -1,0 +1,21 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'cabecario/cabecalho.css' %}">
+    </head>
+    <body>
+        <div class="cabecario">
+            <input type="search">
+            <li class="button">1</li>
+            <li class="button">Post Texto</li>
+            <li class="button">Post Fotos</li>
+            {% if nomeUsuario %}
+            <li class="button">{{ nomeUsuario }}</li>
+            {% else %}
+            <li class="button">Nome Não Achado</li>
+            {% endif %}
+        </div>
+    </body>
+</html>

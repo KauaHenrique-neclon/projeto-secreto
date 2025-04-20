@@ -1,0 +1,78 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="PT-BR">
+    <head>
+        <link rel="stylesheet" href="{% static 'css/home/home.css' %}">
+        <script src="{% static 'js/home/home.js' %}" defer></script>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        {% include 'cabecario/cabecalho.html' %}
+        <div class="tudo">
+            <div class="publicacoes">
+                <div class="postes">
+                    <!-- descricao do usuario da postagem -->
+                    <!-- separa essa merda crlh -->
+                    {% if usuario %}
+                    {% if posterFotos %}
+                    <!-- descricao do usuario -->
+                    <!--    separa carai      -->
+                    <div class="descricaoUsuario">
+                        <img class="user-photo" src="{{ usuario.imagens }}" alt="Foto do Usuário">
+                        <h1>{{ usuario.username }}</h1>
+                        <p style="margin-left: 20%;">{{ post.dataPostagem }}</p>
+                    </div>
+                    <!-- descricao da Postagem -->
+                    <!-- a postagem da lenda -->
+                    <div class="postagem">
+                        <img src="{{ post.imagens }}" alt="foto Usuario">
+                        <p>{{ post.descricao }}</p>
+                        <button id="comentario" name="comentario" value="post.idPost" style="border: none; background-color: transparent; margin-left: 5%; margin-top: 2%;"><img src="{% static 'icones/iconeComentario.png' %}" alt="" style="width: 30px; height: 30px; margin-top: 2%; margin-right: 3%; cursor: pointer;"></button>
+                    </div>
+                    {% endif %}
+                    {% endif %} 
+                    <!-- cabo cla -->
+                </div>
+            </div>
+            <div id="modal-comentarios" class="modal">
+                <div class="modal-conteudo">
+                    <span class="fechar-modal">&times;</span>
+                    <h3>Comentário</h3>
+                    <form action="{% url 'publicarComentario' %}" method="POST">
+                        {% if posterFotos %}
+                        <textarea id="comentarioUsuario" name="comentarioUsuario" placeholder="Digite seu comentário"></textarea>
+                        <button type="submit" id="idPostComentario" name="idPostComentario" value="post.idPost">Enviar</button>
+                        {% endif %}
+                    </form>
+                    {% if usuarioComentario %}
+                    {% for userC in usuarioComentario %}
+                    {% if comentario %}
+                    {% for comenta in comentario %}
+                    <div id="comentarios-existentes">
+                    <!-- Comentários existentes serão exibidos aqui -->
+                        <div class="comentariosFeitos">
+                            <img class="userComentario" src="{{ userC.imagens }}" alt="">
+                            <span>{{ userC.username }}</span>
+                        </div>
+                        <div class="comentarioTexto">
+                            <p>{{ comenta.descricao }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                </div>
+              </div>
+            <div class="mensagens">
+                <div class="adicionar">
+                    <div class="perfilAdicionar">
+                        <img class="userAdicionar" src="sandy.png" alt="Foto do Usuário">
+                        <h1>Nome Usuario</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
