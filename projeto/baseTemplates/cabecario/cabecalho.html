@@ -12,7 +12,7 @@
             <li class="button">Post Texto</li>
             <li class="button">Post Fotos</li>
             {% if nomeUsuario %}
-            <li class="button">{{ nomeUsuario }}</li>
+            <a href="{% url 'perfilUsuario' %}" value="nomeUsuario.idusuario" name="idUsuarioPerfil" id="idUsuarioPerfil"><li class="button">{{ nomeUsuario.username }}</li></a>
             {% else %}
             <li class="button">Nome Não Achado</li>
             {% endif %}

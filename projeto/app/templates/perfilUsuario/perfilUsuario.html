@@ -1,0 +1,117 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'css/perfilUsuario/perfilUsuario.css' %}">
+    </head>
+    <body>
+        <div class="perfilUsuario">
+            {% if dadosUsuario %}
+            <div class="fotoUsuarioNome">
+                <img src="{{ dadosUsuario.fotousuario }}" alt="">
+                <h1>{{ dadosUsuario.username }}</h1>
+            </div>
+            <div class="descricaoUsuario">
+                <div class="dadosReais">
+                    <p>{{ dadosUsuario.first_name }}</p>
+                    <p>{{ dadosUsuario.last_name }}</p>
+                </div>
+                <div class="cidade">
+                    <p>Cidade atual: {{ dadosUsuario.cidadenatal }}</p>
+                    <p>Estado civil: {{ dadosUsuario.estadocivil }}</p>
+                    <p>Data Nascimento: {{ dadosUsuario.datanascimento }}</p>
+                    <p>Entrou: {{ dadosUsuario.datacriacao }}</p>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        <div class="publicarPost">
+            <a href="{% url 'publicarPostFoto' %}"><button>Publicar</button></a>
+            <button>Home</button>
+            <a href="{% url '' %}"><button>Pedidos</button></a>
+        </div>
+        <div class="PostDoUsuario">
+            <div class="PosterUsuario">
+                <div class="postes">
+                    <!-- descricao do usuario da postagem -->
+                    <!-- separa essa merda crlh -->
+                    {% if dadosPost %}
+                    {% for dadosPost in dadosPost %}
+                    {% if dadosUsuario %}
+                    <!-- descricao do usuario -->
+                    <!--    separa carai      -->
+                    <div class="descricaoUsuario">
+                        <img class="user-photo" src="{{ dadosUsuario.imagens }}" alt="Foto do Usuário">
+                        <h1>{{ dadosUsuario.username }}</h1>
+                        <p style="margin-left: 20%;">{{ dadosPost.dataPostagem }}</p>
+                    </div>
+                    <!-- descricao da Postagem -->
+                    <!-- a postagem da lenda -->
+                    <div class="postagem">
+                        <img src="{{ dadosPost.imagens }}" alt="foto postada">
+                        <p>{{ dadosPost.descricao }}</p>
+                        <button id="comentario" name="comentario" value="post.idPost" style="border: none; background-color: transparent; margin-left: 5%; margin-top: 2%;"><img src="{% static 'icones/iconeComentario.png' %}" alt="" style="width: 30px; height: 30px; margin-top: 2%; margin-right: 3%; cursor: pointer;"></button>
+                        <button id="deletePost" name="deletePost" value="post.idPost" type="button">Delete Post</button>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %} 
+                    <!-- cabo cla -->
+                </div>
+            </div>
+            <div id="modal-comentarios" class="modal">
+                <div class="modal-conteudo">
+                    <span class="fechar-modal">&times;</span>
+                    <h3>Comentário</h3>
+                    <form action="{% url 'publicarComentario' %}" method="POST">
+                        {% if posterFotos %}
+                        <textarea id="comentarioUsuario" name="comentarioUsuario" placeholder="Digite seu comentário"></textarea>
+                        <button type="submit" id="idPostComentario" name="idPostComentario" value="post.idPost">Enviar</button>
+                        {% endif %}
+                    </form>
+                    {% if comentario %}
+                    {% for comenta in comentario %}
+                    {% if usuario %}
+                    {% for userC in usuario %}
+                    <div id="comentarios-existentes">
+                    <!-- Comentários existentes serão exibidos aqui -->
+                        <div class="comentariosFeitos">
+                            <img class="userComentario" src="{{ userC.imagens }}" alt="">
+                            <span>{{ userC.username }}</span>
+                        </div>
+                        <div class="comentarioTexto">
+                            <p>{{ comenta.descricao }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="pedidosAmizades" id="pedidosAmizades" name="pedidosAmizades">
+                <div class="modalPedidosAmizades">
+                    <span class="fechar-modal">&times;</span>
+                    <h3>Pedidos de Amizades</h3>
+                    <div class="perfilDoUsuarioAmizade">
+                        {% if amizadesPedendes %}
+                        {% for amizade in amizadesPedendes %}
+                        {% if usuariosQuePediramAmizade %}
+                        <img class="userAdicionar" src="{{ usuariosQuePediramAmizade.fotousuario }}" alt="Foto do Usuário">
+                        <h1>{{ usuariosQuePediramAmizade.username }}</h1>
+                        <button>{{ amizade.status }}</button>
+                        <form action="{% url 'aceitarAmizade' idAmigo=usuario.idusuario %}" method="post" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" name="acao" value="aceitar">Aceitar</button>
+                        </form>
+                        <form action="{% url 'recusarAmizade' idAmigo=usuario.idusuario %}" method="post" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" name="acao" value="recusar">Recusar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

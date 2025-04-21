@@ -135,8 +135,8 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = BASE_DIR / "static"
 
-MEDIA_URL = '/staticMidia/fotosUsuarios/' # é configurado para fazer upload de imagem que usuario faz
-MEDIA_ROOT = BASE_DIR / 'staticMidia/fotosUsuarios' # configurando a pasta que sera salva as midias
+MEDIA_URL = '/staticMidia/' # é configurado para fazer upload de imagem que usuario faz
+MEDIA_ROOT = os.path.join(BASE_DIR, 'staticMidia') # configurando a pasta que sera salva as midias
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

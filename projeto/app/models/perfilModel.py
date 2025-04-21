@@ -12,16 +12,22 @@ class Usuario(models.Model):
     last_name = models.CharField(max_length=255, null=False)
     datacriacao = models.DateField(default=datetime.date.today)
     email = models.EmailField(blank=True,unique=True,null=True)
-    fotousuario = models.CharField(max_length=255, null=True)
+    fotousuario = models.ImageField(upload_to='fotoPerfilUsuario/',blank=True,null=True)
+    datanascimento = models.DateField()
+    cidadenatal = models.CharField(max_length=50)
+    estadocivil = models.CharField(max_length=15)
 
     def __str__(self):
         return self.username
 
+'''insert into app_usuario(username,password,is_active, first_name, last_name, datacriacao,email,datanascimento, cidadenatal, estadocivil) values('kaua','123','true','kaua','correa','2025-04-16','teste123@gmail.com','2004-03-31','Resplendor','solteiro')'''
+    
+"""
 class DadosPessoais(models.Model):
     dataNascimento = models.DateField()
     cidadeNatal = models.CharField(max_length=50)
     estadocivil = models.CharField(max_length=15)
-    idUsuario = models.ForeignKey(Usuario, to_field="idusuario", on_delete=models.CASCADE, related_name='dados_pessoais')
+    idUsuario = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name='dados_pessoais')"""
 
 class Amizades(models.Model):
     idAmizade = models.AutoField(primary_key=True)

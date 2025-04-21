@@ -4,6 +4,7 @@ from django.contrib import messages
 from app.models.homeModels import PostsFoto, PostsText, ComentarioPostsText, ComentariosPostsFoto
 from app.models.perfilModel import Usuario
 import random
+from django.utils import timezone
 
 def loginUsuario(request):
     if request.method == 'POST':
@@ -60,3 +61,22 @@ def paginaInicial(request):
                 'usuario': None
             }
     return render(request, 'home/home.html', contexto)
+
+def comentariosPost(request, idPost):
+    idUser = request.session.get('user_id')
+    if request.method == 'POST':
+        comentario = request.POST.get('comentarioUsuario')
+        dadosUsuario = Usuario.objects.get(idusuario=idUser)
+        if dadosUsuario:
+            comentar = ComentariosPostsFoto(
+                idPost = idPost,
+                textComentado = comentario,
+                idUsuario = dadosUsuario,
+                dataComentario = timezone.now()
+            )
+            comentar.save()
+            messages.success(request,'Comentario feito')
+        else:
+            messages.error(request,'Comentario não feito')
+    else:
+        messages.error(request,'Comentario não feito')

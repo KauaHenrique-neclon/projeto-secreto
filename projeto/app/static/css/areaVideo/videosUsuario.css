@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+}
+
+.tudo {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+}
+   
+.videosUsuario {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 90%;
+    margin: 10px;
+}
+@media screen and (min-width: 700px) {
+    .videosUsuario {
+        width: 400px;
+    }
+}
+.descricaoUsuario {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.descricaoUsuario img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.descricaoUsuario h1 {
+    font-size: 1.2em;
+    color: #333;
+}
+
+.videos {
+    padding: 10px;
+}
+
+.videos video {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.videos p {
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.videos button {
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+}
+
+.videos button img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.videos button:hover {
+    background-color: #0056b3;
+}

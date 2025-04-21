@@ -1,0 +1,229 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+}
+
+.perfilUsuario {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 94%;
+    margin-left: 3%;
+}
+
+.fotoUsuarioNome {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #e6e9ed;
+    padding-bottom: 15px;
+}
+
+.fotoUsuarioNome img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin-right: 15px;
+    border: 2px solid #1877f2;
+}
+
+.descricaoUsuario h1 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.dadosReais p,
+.cidade p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #606770;
+    float: left;
+    margin-left: 3%;
+}
+.publicarPost button{
+    width: 15%;
+    height: 30px;
+    border: 1px solid #1877f2;
+    background-color: #1877f2;
+    border-radius: 10px;
+    margin-left: 5%;
+    color: white;
+}
+
+/*
+.PostDoUsuario {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+    padding: 20px;
+}
+
+.PosterUsuario {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #e6e9ed;
+    padding-bottom: 10px;
+}
+
+.PosterUsuario img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.postagem {
+    margin-top: 15px;
+}
+
+.postagem img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.postagem p {
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+*/
+.PosterUsuario{
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 20px;
+}
+
+.postes {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.descricaoUsuario {
+    display: flex;
+    align-items: center;
+    margin-left: 4em;
+}
+.descricaoUsuario h1{
+    font-size: 18px;
+}
+.user-photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.postagem{
+    width: 80%;
+    margin-left: 5%;
+    margin-top: 2%;
+}
+.postagem img{
+    width: 100%;
+    border-radius: 10px;
+    height: 50rem;
+}
+.postagem p{
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 1%;
+    word-wrap: break-word;
+}
+.deletePost{
+    width: 15%;
+    height: 30px;
+    border: 1px solid #1877f2;
+    background-color: #1877f2;
+    border-radius: 10px;
+    margin-left: 5%;
+    color: white;
+}
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-conteudo {
+    background-color: #ffffff;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #e6e9ed;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.fechar-modal {
+    float: right;
+    font-size: 24px;
+    color: #1877f2;
+    cursor: pointer;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #e6e9ed;
+    border-radius: 4px;
+    resize: none;
+}
+
+button[type="submit"] {
+    background-color: #1877f2;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+#comentarios-existentes {
+    border-top: 1px solid #e6e9ed;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+
+.comentariosFeitos {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.userComentario {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}

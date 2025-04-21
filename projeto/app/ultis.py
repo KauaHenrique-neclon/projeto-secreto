@@ -5,7 +5,7 @@ def nomeUsuario(request):
     if idUser:
         try:
             nomeUser = Usuario.objects.get(idusuario=idUser)
-            return {'nomeUsuario':nomeUser.username}
+            return {'nomeUsuario':nomeUser}
         except Usuario.DoesNotExist:
             return {'nomeUsuario':'Desconhecido'}
     else:

@@ -1,38 +1,65 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="PT-BR">
+<html>
     <head>
-        <link rel="stylesheet" href="{% static 'css/home/home.css' %}">
-        <script src="{% static 'js/home/home.js' %}" defer></script>
-        <meta charset="utf-8">
+        <link rel="stylesheet" href="{% static 'css/perfilUsuario/verPerfilUsuario.css' %}">
     </head>
     <body>
-        {% include 'cabecario/cabecalho.html' %}
-        <div class="tudo">
-            <div class="publicacoes">
+        <div class="perfilUsuario">
+            {% if dadosUsuario %}
+            <div class="fotoUsuarioNome">
+                <img src="{{ dadosUsuario.fotousuario }}" alt="">
+                <h1>{{ dadosUsuario.username }}</h1>
+            </div>
+            <div class="descricaoUsuario">
+                <div class="dadosReais">
+                    <p>{{ dadosUsuario.first_name }}</p>
+                    <p>{{ dadosUsuario.last_name }}</p>
+                </div>
+                <div class="cidade">
+                    <p>Cidade atual: {{ dadosUsuario.cidadeNatal }}</p>
+                    <p>Estado civil: {{ dadosUsuario.estadocivil }}</p>
+                    <p>Data Nascimento: {{ dadosPessoais.dataNascimento }}</p>
+                    <p>Entrou: {{ dadosUsuario.datacriacao }}</p>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        <div class="publicarPost">
+            {% if statusAmizade == "amigos" %}
+            <button>Amigos</button>
+            {% if statusAmizade == "pedende" %}
+            <button>Pedente</button>
+            {% else statusAmizade %}
+            <a href="{% url 'adicionarAmigos' dadosUsuario.idUsuario %}"><button>Adicionar</button></a>
+            {% endif %}
+            <button>Home</button>
+        </div>
+        <div class="PostDoUsuario">
+            <div class="PosterUsuario">
                 <div class="postes">
                     <!-- descricao do usuario da postagem -->
                     <!-- separa essa merda crlh -->
-                    {% if usuario %}
-                    {% if posterFotos %}
+                    {% if dadosPost %}
+                    {% for dadosPost in dadosPost %}
+                    {% if dadosUsuario %}
                     <!-- descricao do usuario -->
                     <!--    separa carai      -->
                     <div class="descricaoUsuario">
-                        <a href="{% url 'verPerfilusuario' usuario.idusuario %}" id="verPerfilUsuario" name="verPerfilUsuario">
-                        <img class="user-photo" src="{{ usuario.fotousuario }}" alt="Foto do Usuário">
-                        <h1>{{ usuario.username }}</h1>
-                        <p style="margin-left: 20%;">{{ post.dataPostagem }}</p>
-                        </a>
+                        <img class="user-photo" src="{{ dadosUsuario.imagens }}" alt="Foto do Usuário">
+                        <h1>{{ dadosUsuario.username }}</h1>
+                        <p style="margin-left: 20%;">{{ dadosPost.dataPostagem }}</p>
                     </div>
                     <!-- descricao da Postagem -->
                     <!-- a postagem da lenda -->
                     <div class="postagem">
-                        <img src="{{ post.imagens }}" alt="foto postada">
-                        <p>{{ post.descricao }}</p>
+                        <img src="{{ dadosPost.imagens }}" alt="foto postada">
+                        <p>{{ dadosPost.descricao }}</p>
                         <button id="comentario" name="comentario" value="post.idPost" style="border: none; background-color: transparent; margin-left: 5%; margin-top: 2%;"><img src="{% static 'icones/iconeComentario.png' %}" alt="" style="width: 30px; height: 30px; margin-top: 2%; margin-right: 3%; cursor: pointer;"></button>
                     </div>
                     {% endif %}
+                    {% endfor %}
                     {% endif %} 
                     <!-- cabo cla -->
                 </div>
@@ -41,16 +68,16 @@
                 <div class="modal-conteudo">
                     <span class="fechar-modal">&times;</span>
                     <h3>Comentário</h3>
-                    {% if posterFotos %}
-                    <form action="{% url 'publicarComentario' posterFotos.idPost %}" method="POST">
+                    <form action="{% url 'publicarComentario' %}" method="POST">
+                        {% if posterFotos %}
                         <textarea id="comentarioUsuario" name="comentarioUsuario" placeholder="Digite seu comentário"></textarea>
                         <button type="submit" id="idPostComentario" name="idPostComentario" value="post.idPost">Enviar</button>
+                        {% endif %}
                     </form>
-                    {% endif %}
-                    {% if usuarioComentario %}
-                    {% for userC in usuarioComentario %}
                     {% if comentario %}
                     {% for comenta in comentario %}
+                    {% if usuario %}
+                    {% for userC in usuario %}
                     <div id="comentarios-existentes">
                     <!-- Comentários existentes serão exibidos aqui -->
                         <div class="comentariosFeitos">
@@ -65,14 +92,6 @@
                     {% endif %}
                     {% endfor %}
                     {% endif %}
-                </div>
-              </div>
-            <div class="mensagens">
-                <div class="adicionar">
-                    <div class="perfilAdicionar">
-                        <img class="userAdicionar" src="aaaa.png" alt="Foto do Usuário">
-                        <h1>Nome Usuario</h1>
-                    </div>
                 </div>
             </div>
         </div>
